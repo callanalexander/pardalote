@@ -1,0 +1,34 @@
+# pardalote - conda environment
+#
+# This is the recommended way to install on Windows, because conda ships
+# pre-built versions of hdbscan, llvmlite and libsndfile, so you do not need a
+# C++ compiler.
+#
+# Create it with:
+#     conda env create -f environment.yml
+#     conda activate pardalote
+#
+# See docs/01_install.md for the full walkthrough.
+
+name: pardalote
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python=3.11
+  - numpy
+  - pandas
+  - scipy
+  - scikit-learn
+  - matplotlib
+  - umap-learn
+  - hdbscan
+  - librosa
+  - python-sounddevice
+  - pysoundfile
+  - psutil
+  - jupyterlab
+  - notebook
+  - ffmpeg
+  - tk

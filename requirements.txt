@@ -1,0 +1,19 @@
+# pardalote - pip requirements
+#
+# On Windows the conda route in environment.yml is easier, because hdbscan and
+# llvmlite need a C/C++ compiler when installed from pip. If you are using pip
+# anyway, install Microsoft Visual C++ Build Tools first. See docs/01_install.md.
+
+numpy>=1.24,<3
+pandas>=2.0
+scipy>=1.10
+scikit-learn>=1.3
+matplotlib>=3.7
+umap-learn>=0.5.5
+hdbscan>=0.8.40
+librosa>=0.10.1
+soundfile>=0.12.1
+sounddevice>=0.4.6
+psutil>=5.9
+notebook>=7.0
+jupyterlab>=4.0
