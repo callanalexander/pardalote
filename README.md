@@ -19,6 +19,8 @@ classifier outputs
 ## Requirements
 
 - Windows PC (for now). Not tested on Mac or Linux. The notebooks assume Windows paths.
+- At the moment Pardalote runs from a single Jupyter Notebook. We have done this to make usage as simple as possible for
+  ecologists used to working in R. This project is open source so feel free to adapt for your own workflow. 
 - Python 3.11.
 - Audio files.
 - Embeddings for those files, from
