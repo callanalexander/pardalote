@@ -8,7 +8,7 @@ in folders named by label. We are currently updating this repository with tutori
 is a draft repository for a publication currently in review: 
 Searching under the threshold: human-in-the-loop clustering
 of global birdsong embeddings for validating bioacoustic
-classifier outputs
+classifier outputs. We provide example embedding and audio files from the paper for download in 'audio_data_download.md' 
 
 
 
