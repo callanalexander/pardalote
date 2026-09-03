@@ -5,7 +5,7 @@ BirdNET or Perch embeddings, reduces them with UMAP, clusters them with HDBSCAN,
 and plots the result. Segments can be played from the plot. Clusters can be
 labelled as target species or as noise, noise clusters can be removed, and the
 remaining segments re-clustered. Retained segments are exported as audio clips
-in folders named by label.
+in folders named by label. 
 
 It runs locally. No audio or embeddings are uploaded.
 
@@ -15,13 +15,12 @@ It runs locally. No audio or embeddings are uploaded.
 
 ## Requirements
 
-- Windows. Not tested on Mac or Linux. The notebooks assume Windows paths.
+- Windows PC (for now). Not tested on Mac or Linux. The notebooks assume Windows paths.
 - Python 3.11.
 - Audio files.
 - Embeddings for those files, from
   [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer) or
   [Perch](https://github.com/google-research/perch-hoplite).
-- 8 GB RAM, or 16 GB for datasets above a few hundred thousand segments.
 
 ## Documentation
 
