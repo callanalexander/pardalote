@@ -8,7 +8,7 @@ in folders named by label.
 
 **This 
 is a draft repository for a publication currently in review and is actively being updated with tutorials for usage**: 
-A pre-print will be available shortly with further information: Searching under the threshold: human-in-the-loop clustering
+A pre-print will be available shortly with further information and an overview of the workflow that we suggest: Searching under the threshold: human-in-the-loop clustering
 of global birdsong embeddings for validating bioacoustic
 classifier outputs. We provide example embedding and audio files from the paper for download in 'audio_data_download.md' 
 
