@@ -1,163 +1,127 @@
 # 1. Installing pardalote
 
-There are four parts:
+There are four stages:
 
-1. Install Anaconda or miniconda, which is the thing that manages Python for you
-2. Download pardalote
+1. Install Anaconda or Miniconda, which manages Python and its environments
+2. Obtain the pardalote source
 3. Create the pardalote environment
-4. Check it worked
+4. Verify the installation
 
-If any step fails, jump to [troubleshooting](04_troubleshooting.md) rather than
-guessing. Guessing at installs tends to make things worse.
+If a stage fails, consult [troubleshooting](04_troubleshooting.md) 
+---
 
+## Step 1: Install Miniconda (or Anaconda)
+
+Miniconda provides Python and `conda`, the environment manager.
+
+1. Download the Windows 64-bit `.exe` installer from
+   <https://www.anaconda.com/download/success>, under **Miniconda Installers**.
+2. Run the installer.
+3. Select **Just Me** rather than "All Users". This avoids the need for
+   administrator rights at later stages.
+4. Accept the default install location.
+5. Under **Advanced Options**, tick **Register Miniconda3 as my default
+   Python**. Leave **Add to PATH** unticked, as advised by the installer.
+6. Complete the installation, then **restart the computer**. Omitting this is
+   the most common cause of `conda is not recognised` errors.
+
+To confirm installation, open Anaconda Prompt. The prompt should begin with
+`(base)`, which indicates the currently active environment.
 
 ---
 
-## Step 1: Install Miniconda
+## Step 2: Obtain pardalote
 
-Miniconda is a small installer that gives you Python plus `conda`, the tool that
-builds environments.
+### Option A: download the archive
 
-1. Go to <https://www.anaconda.com/download/success> and, under **Miniconda
-   Installers**, download the Windows 64-bit `.exe`.
-2. Run it.
-3. When asked, choose **Just Me**, not "All Users". This avoids needing
-   administrator rights later.
-4. Leave the install location at whatever it suggests.
-5. On the "Advanced Options" screen, tick **Register Miniconda3 as my default
-   Python**. Leave "Add to PATH" unticked: the warning next to it is real, and
-   you do not need it.
-6. Finish, then **restart your computer**. This genuinely matters. Skipping it is
-   the single most common cause of "conda is not recognised" later.
+1. Open the pardalote GitHub page.
+2. Select **Code**, then **Download ZIP**.
+3. Save the archive to a working directory, for example
+   `C:\Users\YourName\Documents`.
+4. Right click the archive, select **Extract All**, and extract in place.
 
-To confirm it worked: press the Windows key, type `Anaconda Prompt`, and open it.
-You should get a black window with `(base)` at the start of the line. That
-`(base)` is conda telling you which environment you are in.
+This produces a folder named `pardalote-main`, which may be renamed to
+`pardalote`. Record the full path to this folder, as it is required in the next
+stage. The path will resemble `C:\Users\YourName\Documents\pardalote`.
 
----
+### Option B: clone with git
 
-## Step 2: Download pardalote
-
-Two options. Pick whichever you find less intimidating.
-
-### Option A: download a zip (simplest)
-
-1. Go to the pardalote GitHub page.
-2. Click the green **Code** button, then **Download ZIP**.
-3. Save it somewhere sensible, like `C:\Users\YourName\Documents`.
-4. Right click the zip, choose **Extract All**, and extract it there.
-
-You now have a folder called `pardalote-main`. Rename it to `pardalote` if you
-like. **Note down the full path to this folder**, because you will need it in a
-moment. It will look something like
-`C:\Users\YourName\Documents\pardalote`.
-
-### Option B: use git
-
-If you already have git installed and know what it is:
+If git is already installed:
 
 ```bash
 cd C:\Users\YourName\Documents
-git clone https://github.com/YOUR-USERNAME/pardalote.git
+git clone https://github.com/callanalexander/pardalote.git
 cd pardalote
 ```
-
-The advantage is that `git pull` gets you future updates in one command. The
-disadvantage is installing git. Option A is fine.
 
 ---
 
 ## Step 3: Create the pardalote environment
 
-Open **Anaconda Prompt**.
-
-First, move into the pardalote folder. Type `cd `, then the path you noted down,
-in quotes:
+Open Anaconda Prompt and change to the pardalote directory, quoting the path
+recorded above:
 
 ```
 cd "C:\Users\YourName\Documents\pardalote"
 ```
 
-> **Tip:** you can copy a folder path from File Explorer by clicking the address
-> bar and pressing Ctrl+C. In Anaconda Prompt, paste with a right click, not
+> A folder path can be copied from File Explorer by selecting the address bar
+> and pressing Ctrl+C. In Anaconda Prompt, paste with a right click rather than
 > Ctrl+V.
 
-If the folder is on a different drive, for example `D:`, you need to switch
-drives first by typing `D:` on its own line, then the `cd` command.
+If the folder is on a different drive, for example `D:`, enter the drive letter
+on its own line before the `cd` command.
 
-Now build the environment:
+Create the environment:
 
 ```
 conda env create -f environment.yml
 ```
 
-This downloads about a gigabyte and takes ten to thirty minutes. It will look
-frozen at "Solving environment" for a while. It is not frozen. Leave it alone.
-
-When it finishes, activate the environment:
+Activate the environment once it completes:
 
 ```
 conda activate pardalote
 ```
 
-The `(base)` at the start of your prompt should change to `(pardalote)`. That is
-how you know it worked.
+The prompt prefix should change from `(base)` to `(pardalote)`, confirming
+activation.
 
-> **You will need to do this every time.** Opening Anaconda Prompt always starts
-> you in `(base)`. Running pardalote from `(base)` will not work, because the
-> packages are not installed there. Get into the habit: open prompt, type
-> `conda activate pardalote`, then carry on.
+> Activation is required in every new session. Anaconda Prompt always opens in
+> `(base)`, and pardalote will not run there because its packages are installed
+> only in the `pardalote` environment.
 
-### If conda is very slow
 
-Some machines take an hour on "Solving environment". If yours is one, cancel with
-Ctrl+C and use the faster solver instead:
+## Step 4: Verify the installation
 
-```
-conda install -n base conda-libmamba-solver
-conda env create -f environment.yml --solver=libmamba
-```
-
----
-
-## Step 4: Check it worked
-
-Still in Anaconda Prompt, with `(pardalote)` showing, start Jupyter:
+With `(pardalote)` active, start Jupyter:
 
 ```
 jupyter lab
 ```
 
-Your web browser opens with a file listing. This is JupyterLab, where you will
-run everything. It is running on your own computer, not on the internet, despite
-appearing in a browser.
+JupyterLab opens in the default web browser and displays a file listing. It runs
+locally, not over the internet, despite the browser interface.
 
-**Leave the Anaconda Prompt window open.** Closing it shuts Jupyter down.
+Leave the Anaconda Prompt window open. Closing it terminates the Jupyter server.
 
-In the file listing on the left, double click `notebooks`, then double click
-`00_check_setup.ipynb`.
-
-You will see a block of text and, below it, a block of code in a grey box. Click
-once on the grey box to select it, then press **Shift + Enter** to run it.
-
-After a few seconds you should see a list ending in:
+In the file listing, open `notebooks`, then `00_check_setup.ipynb`. Select the
+code cell and press **Shift + Enter** to execute it. The expected output ends
+with:
 
 ```
 All packages are present.
 ```
 
-If instead some lines say `MISSING`, the output tells you the exact command to
-fix it. Copy that command, paste it into Anaconda Prompt, let it finish, then
-restart the notebook kernel (menu: **Kernel** > **Restart Kernel**) and run the
-cell again.
+If any package is reported as `MISSING`, the output includes the command
+required to install it. Run that command in Anaconda Prompt, restart the
+notebook kernel (**Kernel** > **Restart Kernel**), and execute the cell again.
 
 ---
 
-## You are installed
+## Starting pardalote in subsequent sessions
 
-To start pardalote on any future day:
-
-1. Open **Anaconda Prompt**
+1. Open Anaconda Prompt
 2. `conda activate pardalote`
 3. `cd "C:\path\to\pardalote"`
 4. `jupyter lab`
@@ -165,22 +129,3 @@ To start pardalote on any future day:
 Next: **[generating your embeddings](02_generate_embeddings.md)**.
 
 ---
-
-## Appendix: installing with pip instead of conda
-
-Only do this if you have a reason to avoid conda, and know your way around a
-terminal.
-
-`hdbscan` and `llvmlite` need a C++ compiler when installed from pip on Windows,
-so install [Microsoft C++ Build
-Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools/) first, ticking
-the "Desktop development with C++" workload. Then:
-
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-If `pip install hdbscan` fails with a wall of compiler errors, that is the
-missing build tools. The conda route exists precisely to avoid this.
