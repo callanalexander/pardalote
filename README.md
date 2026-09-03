@@ -27,32 +27,29 @@ in folders named by label.
 3. [Using the GUI](docs/03_using_the_gui.md)
 4. [Troubleshooting](docs/04_troubleshooting.md)
 
-## Generating BirdNET embeddings
+## How to get embeddings in the right format?
+
+Pardalote uses embeddings for clustering, and auditions the associated audio file. It expects embeddings in a .txt file, with the same file name as your audio file. 
+We have provided test examples in the audio data folder. The easiest way to get embeddings in this format for new users is to use the BirdNET GUI: 
 
 Use the BirdNET-Analyzer GUI.
 
 1. Open the Embeddings tab and select Extract.
 2. Set the input to the folder containing your audio.
 3. Set a folder and name for the embeddings database.
-4. Set overlap, bandpass filter and audio speed. These are stored in the
-   database and reused if further audio is added to it. Record the values used.
-5. Enable CSV output and set an output folder. Without this the embeddings are
+4. Enable CSV output and set an output folder. Without this the embeddings are
    only written to the hoplite database, which pardalote cannot read.
-6. Run.
+5. Run
 
 The output is a single CSV containing every 3 second segment in the dataset:
 source file, start time, end time, and the embedding vector.
 
 The equivalent command is:
 
-```bash
-python -m birdnet_analyzer.embeddings -i D:\audio -db D:\embeddings_db --file_output D:\embeddings_csv --threads 4
-```
-
-pardalote reads one file per recording, so the CSV must be split. Run notebook
+pardalote reads one file per recording, so the CSV must be split. We provide a notebook to split the large BirdNET csv files: Run notebook
 `01_birdnet_csv_to_txt.ipynb`, setting the input CSV and an output folder.
 
-For Perch, use `03_perch_db_to_txt.ipynb` to export from the Perch database.
+For Perch, we have `03_perch_db_to_txt.ipynb` to export from a Perch hoplite database.
 
 ## Input format
 
