@@ -7,8 +7,6 @@ labelled as target species or as noise, noise clusters can be removed, and the
 remaining segments re-clustered. Retained segments are exported as audio clips
 in folders named by label. 
 
-It runs locally. No audio or embeddings are uploaded.
-
 ![platform](https://img.shields.io/badge/platform-Windows-blue)
 ![python](https://img.shields.io/badge/python-3.11-blue)
 ![licence](https://img.shields.io/badge/licence-MIT-green)
