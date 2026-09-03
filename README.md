@@ -1,5 +1,5 @@
 # pardalote
-pardalote is a GUI for validating large numbers of acoustic detections. It reads
+pardalote is a GUI for iterative human-in-the-loop clustering of global birdsong embeddings and the associated audio. It reads
 BirdNET or Perch embeddings, reduces them with UMAP, clusters them with HDBSCAN,
 and plots the result. Segments can be played from the plot. Clusters can be
 labelled as target species or as noise, noise clusters can be removed, and the
