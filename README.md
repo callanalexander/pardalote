@@ -129,7 +129,7 @@ similarity only. Assigning clusters to species is done by the user.
 
 ## Licence
 
-MIT. See [LICENSE](LICENSE). No warranty. Validate your own results.
+MIT. See [LICENSE](LICENSE).
 
 ## Issues
 
