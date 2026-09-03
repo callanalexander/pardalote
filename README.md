@@ -1,87 +1,73 @@
 # pardalote
 
-A point-and-click tool for sorting through large piles of acoustic detections.
+pardalote is a GUI for validating large numbers of acoustic detections. It reads
+BirdNET or Perch embeddings, reduces them with UMAP, clusters them with HDBSCAN,
+and plots the result. Segments can be played from the plot. Clusters can be
+labelled as target species or as noise, noise clusters can be removed, and the
+remaining segments re-clustered. Retained segments are exported as audio clips
+in folders named by label.
 
-You feed it BirdNET or Perch embeddings, it draws every segment of audio as a
-dot on a map, and dots that sound alike land near each other. Click a dot to
-hear it. Label the clumps that are your target species, mark the clumps that are
-rain or traffic or a chainsaw, throw those away, and cluster again on what is
-left. When you are happy, export the clips you kept, sorted into folders.
+It runs locally. No audio or embeddings are uploaded.
 
-The point is to skip listening to fifty thousand false positives one at a time.
+![platform](https://img.shields.io/badge/platform-Windows-blue)
+![python](https://img.shields.io/badge/python-3.11-blue)
+![licence](https://img.shields.io/badge/licence-MIT-green)
 
-![status](https://img.shields.io/badge/platform-Windows-blue)
-![status](https://img.shields.io/badge/python-3.11-blue)
-![status](https://img.shields.io/badge/licence-MIT-green)
+## Requirements
 
----
-
-## Who this is for
-
-Ecologists and bioacousticians who have run a recogniser over a season of audio,
-have far more detections than they can validate by hand, and want a faster way
-through. **No coding experience is assumed.** The instructions spell out every
-step, including installing Python.
-
-Everything runs on your own machine. Nothing is uploaded anywhere.
-
-## What you need before you start
-
-- **A Windows PC.** pardalote is only tested on Windows. It may well run on Mac
-  or Linux, but nobody has checked, and the helper notebooks assume Windows-style
-  paths.
-- **Your audio files**, in a folder you can find.
-- **Embeddings for that audio**, from either
+- Windows. Not tested on Mac or Linux. The notebooks assume Windows paths.
+- Python 3.11.
+- Audio files.
+- Embeddings for those files, from
   [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer) or
   [Perch](https://github.com/google-research/perch-hoplite).
-  [`docs/02_generate_embeddings.md`](docs/02_generate_embeddings.md) walks you
-  through making them if you have not yet.
-- **8 GB of RAM minimum.** 16 GB or more if you are working with hundreds of
-  thousands of segments.
-- **An hour**, the first time, mostly waiting on installers.
+- 8 GB RAM, or 16 GB for datasets above a few hundred thousand segments.
 
-## Getting started
+## Documentation
 
-Work through these in order. Each one is short.
+1. [Install](docs/01_install.md)
+2. [Generating embeddings](docs/02_generate_embeddings.md)
+3. [Using the GUI](docs/03_using_the_gui.md)
+4. [Troubleshooting](docs/04_troubleshooting.md)
 
-1. **[Install everything](docs/01_install.md)** - Python, the pardalote
-   environment, and the code. Do this once.
-2. **[Generate your embeddings](docs/02_generate_embeddings.md)** - running
-   BirdNET or Perch over your audio, then converting the output into the format
-   pardalote reads.
-3. **[Use the GUI](docs/03_using_the_gui.md)** - the actual sorting workflow,
-   button by button.
-4. **[Troubleshooting](docs/04_troubleshooting.md)** - when something does not
-   work. Read this before giving up.
+## Generating BirdNET embeddings
 
-## What is in this repository
+Use the BirdNET-Analyzer GUI.
 
-```
-pardalote/
-├── notebooks/
-│   ├── 00_check_setup.ipynb                    run first, checks your install
-│   ├── 01_birdnet_csv_to_txt.ipynb             BirdNET users: split the big CSV
-│   ├── 02_mirror_embeddings_to_audio_tree.ipynb  optional: fix folder mismatches
-│   ├── 03_perch_db_to_txt.ipynb                Perch users: export the database
-│   └── pardalote_gui.ipynb                     the main tool
-├── docs/
-│   ├── 01_install.md
-│   ├── 02_generate_embeddings.md
-│   ├── 03_using_the_gui.md
-│   └── 04_troubleshooting.md
-├── src/                                        the same code as plain .py files
-├── environment.yml                             conda install recipe
-├── requirements.txt                            pip install recipe
-└── LICENSE
+1. Open the Embeddings tab and select Extract.
+2. Set the input to the folder containing your audio.
+3. Set a folder and name for the embeddings database.
+4. Set overlap, bandpass filter and audio speed. These are stored in the
+   database and reused if further audio is added to it. Record the values used.
+5. Enable CSV output and set an output folder. Without this the embeddings are
+   only written to the hoplite database, which pardalote cannot read.
+6. Run.
+
+The output is a single CSV containing every 3 second segment in the dataset:
+source file, start time, end time, and the embedding vector.
+
+The equivalent command is:
+
+```bash
+python -m birdnet_analyzer.embeddings -i D:\audio -db D:\embeddings_db --file_output D:\embeddings_csv --threads 4
 ```
 
-You will only ever open the notebooks. The `src/` folder holds the identical
-code as plain text, which is useful for reading diffs on GitHub and for anyone
-who prefers running scripts.
+pardalote reads one file per recording, so the CSV must be split. Run notebook
+`01_birdnet_csv_to_txt.ipynb`, setting the input CSV and an output folder.
 
-## The very short version
+For Perch, use `03_perch_db_to_txt.ipynb` to export from the Perch database.
 
-For anyone who has done this sort of thing before:
+## Input format
+
+One `.txt` per recording. Each row is one segment:
+
+```
+start_seconds <TAB> end_seconds <TAB> "v1,v2,...,vN"
+```
+
+The first folder level below the embeddings root is read as the site name.
+
+## Usage
 
 ```bash
 conda env create -f environment.yml
@@ -89,60 +75,65 @@ conda activate pardalote
 jupyter lab
 ```
 
-Convert your embeddings to one `.txt` per recording using notebook `01`
-(BirdNET) or `03` (Perch), where each row is:
+Open `pardalote_gui.ipynb`, run the cell, set the audio and embeddings paths,
+then Scan, Load, Cluster, Plot.
+
+## Repository contents
 
 ```
-start_seconds <TAB> end_seconds <TAB> "v1,v2,...,vN"
+pardalote/
+├── notebooks/
+│   ├── 00_check_setup.ipynb                      checks the install
+│   ├── 01_birdnet_csv_to_txt.ipynb               BirdNET: split the CSV
+│   ├── 02_mirror_embeddings_to_audio_tree.ipynb  optional: correct folder mismatches
+│   ├── 03_perch_db_to_txt.ipynb                  Perch: export the database
+│   └── pardalote_gui.ipynb                       the GUI
+├── docs/
+│   ├── 01_install.md
+│   ├── 02_generate_embeddings.md
+│   ├── 03_using_the_gui.md
+│   └── 04_troubleshooting.md
+├── src/                                          the same code as .py files
+├── environment.yml
+├── requirements.txt
+└── LICENSE
 ```
 
-Arrange them so the first folder level under your embeddings root is the site
-name. Then open `pardalote_gui.ipynb`, run the cell, set the two paths, and
-press Scan, Load, Cluster, Plot.
+`src/` contains the same code as the notebooks, for reading diffs and for
+running as scripts.
 
-## How it works
+## Method
 
-Under the hood there are three steps.
+BirdNET and Perch convert a segment of audio into a vector of several hundred to
+several thousand values. Segments containing similar sounds have similar
+vectors. These vectors are the input to pardalote.
 
-**Embeddings.** BirdNET and Perch both turn a few seconds of audio into a list
-of several hundred to a couple of thousand numbers, a fingerprint of what the
-sound is like. Two recordings of the same call have similar fingerprints. Those
-fingerprints are the input to pardalote, not the audio itself.
+UMAP reduces the vectors to two or three dimensions for plotting, preserving
+local structure from the original space.
 
-**UMAP.** Those fingerprints have far too many dimensions to plot. UMAP squashes
-them down to two or three, trying to keep things that were close together in the
-original space close together in the squashed one. That is the map you see.
+HDBSCAN identifies dense regions in the reduced space and assigns each a cluster
+number. Points not assigned to a cluster are labelled `-1`. The number of
+clusters is not specified in advance.
 
-**HDBSCAN.** This finds the dense clumps in that map and gives each one a number.
-Anything not in a clump is labelled noise, cluster `-1`. HDBSCAN does not ask you
-how many clusters to expect, which is the right behaviour here, because you do
-not know.
+None of these steps use species information. They group segments by acoustic
+similarity only. Assigning clusters to species is done by the user.
 
-None of these steps know anything about birds. They just group sounds that
-resemble each other. Deciding which group is your species is your job, and that
-is why the tool plays audio at you.
+## Citation
 
-## Citing this
+Cite this repository, BirdNET or Perch, UMAP, and HDBSCAN.
 
-If pardalote contributes to published work, please cite this repository, and
-cite BirdNET or Perch for the embeddings, plus UMAP and HDBSCAN:
-
-- **BirdNET**: Kahl, S., Wood, C. M., Eibl, M., & Klinck, H. (2021). BirdNET: A
-  deep learning solution for avian diversity monitoring. *Ecological
-  Informatics*, 61, 101236.
-- **UMAP**: McInnes, L., Healy, J., & Melville, J. (2018). UMAP: Uniform Manifold
+- Kahl, S., Wood, C. M., Eibl, M., & Klinck, H. (2021). BirdNET: A deep learning
+  solution for avian diversity monitoring. *Ecological Informatics*, 61, 101236.
+- McInnes, L., Healy, J., & Melville, J. (2018). UMAP: Uniform Manifold
   Approximation and Projection for Dimension Reduction. *arXiv:1802.03426*.
-- **HDBSCAN**: Campello, R. J. G. B., Moulavi, D., & Sander, J. (2013).
-  Density-based clustering based on hierarchical density estimates. *PAKDD*.
+- Campello, R. J. G. B., Moulavi, D., & Sander, J. (2013). Density-based
+  clustering based on hierarchical density estimates. *PAKDD*.
 
 ## Licence
 
-MIT. See [LICENSE](LICENSE). Use it, change it, publish with it. No warranty:
-check your own results.
+MIT. See [LICENSE](LICENSE). No warranty. Validate your own results.
 
-## Contributing and getting help
+## Issues
 
-Found a bug, or got stuck on a step the docs do not cover? Open an
-[issue](../../issues). Include what you were doing, the exact error text, and
-which notebook you were in. If the docs were unclear, that is a bug too, and
-worth reporting.
+Report bugs and unclear documentation at [issues](../../issues). Include the
+notebook, what was being run, and the full error text.
