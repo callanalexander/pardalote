@@ -1,10 +1,8 @@
 # 1. Installing pardalote
 
-You do this once. Set aside an hour, most of which is waiting on downloads.
-
 There are four parts:
 
-1. Install Miniconda, which is the thing that manages Python for you
+1. Install Anaconda or miniconda, which is the thing that manages Python for you
 2. Download pardalote
 3. Create the pardalote environment
 4. Check it worked
@@ -12,24 +10,6 @@ There are four parts:
 If any step fails, jump to [troubleshooting](04_troubleshooting.md) rather than
 guessing. Guessing at installs tends to make things worse.
 
----
-
-## A note on jargon
-
-Three words appear constantly and are worth pinning down now.
-
-**Python** is the programming language pardalote is written in. You will never
-write any. You just need it installed.
-
-**An environment** is a private, self-contained copy of Python with a specific
-set of add-on packages. Having one for pardalote means installing something else
-later cannot break it. You will create one called `pardalote`.
-
-**Anaconda Prompt** is a black window where you type commands. It is not the
-normal Windows Command Prompt. It is a special one that knows about your
-environments. When these docs say "open Anaconda Prompt", they mean the one that
-Miniconda installs, which you find by pressing the Windows key and typing
-`Anaconda Prompt`.
 
 ---
 
