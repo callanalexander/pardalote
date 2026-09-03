@@ -348,18 +348,4 @@ together will get almost any dataset through on a normal laptop.
 
 ---
 
-## Habits worth having
-
-- **Set an autosave folder before you start.** Three hours of labelling is a lot
-  to lose.
-- **Do a fast pass first.** Sample Rate 0.1, cluster, look. You learn the shape of
-  your data in five minutes instead of an hour, and you find out early if your
-  settings are wrong.
-- **Colour by site before trusting any cluster.**
-- **Listen before you label.** The spectrogram thumbnails are quick to skim but
-  they are not enough on their own.
-- **Export the manifest even when you do not need the clips.** It costs seconds
-  and it is your record of what you did.
-- **Re-cluster more than once.** The second round is usually where it gets good.
-
 Stuck? **[Troubleshooting](04_troubleshooting.md)**.
