@@ -1,10 +1,5 @@
 # 3. Using the pardalote GUI
 
-This is the actual work. Read it once through before you start, then keep it
-open beside you.
-
----
-
 ## Starting up
 
 1. Open **Anaconda Prompt**
