@@ -222,11 +222,10 @@ pardalote searches it recursively.
 
 ---
 
-## Sanity check before moving on
+## check before moving on
 
-- [ ] You have a folder of `.txt` files
-- [ ] Opening one in Notepad shows numbers, not gibberish, with tabs between the
-      first three fields
+- [ ] You have a folder of `.txt` files with same names and folder structure as your audio
+- [ ] Opening one in Notepad shows numbers
 - [ ] The filenames resemble your audio filenames
 - [ ] There is at least one folder level for site names
 - [ ] You know the full path to that folder, and to your audio folder
