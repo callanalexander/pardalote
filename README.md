@@ -4,8 +4,10 @@ BirdNET or Perch embeddings, reduces them with UMAP, clusters them with HDBSCAN,
 and plots the result. Segments can be played from the plot. Clusters can be
 labelled as target species or as noise, noise clusters can be removed, and the
 remaining segments re-clustered. Retained segments are exported as audio clips
-in folders named by label. We are currently updating this repository with tutorials for usage - **this 
-is a draft repository for a publication currently in review and is actively being updated**: 
+in folders named by label. 
+
+**This 
+is a draft repository for a publication currently in review and is actively being updated with tutorials for usage**: 
 Searching under the threshold: human-in-the-loop clustering
 of global birdsong embeddings for validating bioacoustic
 classifier outputs. We provide example embedding and audio files from the paper for download in 'audio_data_download.md' 
