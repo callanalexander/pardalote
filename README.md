@@ -123,9 +123,11 @@ similarity only. Assigning clusters to species is done by the user.
 
 ## Citation
 
+The pre-print for this work will be out shortly. This work relies heavily on the contributions of the following papers: 
+
 - Kahl, S., Wood, C. M., Eibl, M., & Klinck, H. (2021). BirdNET: A deep learning
   solution for avian diversity monitoring. *Ecological Informatics*, 61, 101236.
-  van Merriënboer, B., Dumoulin, V., Hamer, J., Harrell, L., Burns, A., & Denton, T.
+- van Merriënboer, B., Dumoulin, V., Hamer, J., Harrell, L., Burns, A., & Denton, T.
   (2025). Perch 2.0: The bittern lesson for bioacoustics. arXiv preprint arXiv:2508.04665.
 - McInnes, L., Healy, J., & Melville, J. (2018). UMAP: Uniform Manifold
   Approximation and Projection for Dimension Reduction. *arXiv:1802.03426*.
