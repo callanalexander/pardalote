@@ -53,9 +53,7 @@ Use the BirdNET-Analyzer GUI.
 The output is a single CSV containing every 3 second segment in the dataset:
 source file, start time, end time, and the embedding vector.
 
-The equivalent command is:
-
-pardalote reads one file per recording, so the CSV must be split. We provide a notebook to split the large BirdNET csv files: Run notebook
+pardalote reads one file per recording, so the CSV must then be split up. We provide a notebook to split the large BirdNET csv files: Run notebook
 `01_birdnet_csv_to_txt.ipynb`, setting the input CSV and an output folder.
 
 For Perch, we have `03_perch_db_to_txt.ipynb` to export from a Perch hoplite database.
