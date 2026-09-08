@@ -8,7 +8,9 @@ remaining segments to get rid of some of the 'noise' in your data! Retained segm
 Another useful feature is the ability to colour points by your subfolder structure. For example, if you have all your audio grouped by site, you can jump between coloured by HDBSCAN and coloured by Site. 
 So see which clusters contain audio from which site. This can be wrangled in multiple ways - colour points by confidence score, species, location, date, ecological variables - totally up to you! 
 
+<div align="center">
 <img width="589" height="407" alt="Recording2026-08-17203017-ezgif com-resize (1)" src="https://github.com/user-attachments/assets/e074e77e-e321-4af7-a477-20e839d422e6" />
+</div>
 
 **This 
 is a draft repository for a publication currently in review and is actively being updated with tutorials for usage**: 
