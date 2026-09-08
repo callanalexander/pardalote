@@ -1,10 +1,11 @@
 # pardalote
 pardalote is a GUI for iterative human-in-the-loop clustering of global birdsong embeddings and the associated audio. It reads
 BirdNET or Perch embeddings, reduces them with UMAP, clusters them with HDBSCAN,
-and plots the result. Segments can be played from the plot. Clusters can be
-labelled (eg with the target species or labelling undesired clusters), noise clusters can be removed, and the
-remaining segments re-clustered. Retained segments are exported as audio clips
-in folders named by label. 
+and plots the result. Segments can be played from the plot - you can click around and find groups of sounds. Clusters can be
+labelled (eg with the target species or labelling undesired clusters). You can easily remove unwanted clusters, and then re-cluster
+remaining segments to get rid of some of the 'noise' in your data! Retained segments can be exported as audio clips, or your cluster labels can be saved to a csv. 
+Another useful feature is the ability to colour points by your subfolder structure. For example, if you have all your audio grouped by site, you can jump between coloured by HDBSCAN and coloured by Site. 
+So see which clusters contain audio from which site. This can be wrangled in multiple ways - colour points by confidence score, species, location, date, ecological variables - totally up to you! 
 
 **This 
 is a draft repository for a publication currently in review and is actively being updated with tutorials for usage**: 
