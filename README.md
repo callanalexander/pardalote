@@ -22,7 +22,8 @@ classifier outputs. We provide example embedding and audio files from the paper 
 
 - Windows PC (for now). Not tested on Mac or Linux. The notebooks assume Windows paths.
 - At the moment Pardalote runs from a single Jupyter Notebook. We have done this to make usage as simple as possible for
-  ecologists used to working in R. This project is open source so feel free to adapt for your own workflow. 
+  ecologists used to working in R. This project is open source so feel free to adapt for your own workflow. This tool is something I have found really useful in my own personal workflow
+working on birds (particularly to get rid of false-positives, find hiding vocalisations and get an overview of model outputs across all thresholds) and I hope it is useful for others also. 
 - Python 3.11.
 - Audio files.
 - Embeddings for those files, from
