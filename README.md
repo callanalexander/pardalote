@@ -12,11 +12,11 @@ remaining segments to get rid of some of the 'noise' in your data! Retained segm
 pardalote also lets you colour points by your subfolder structure. For example, if you have all your audio grouped by site, you can jump between viewing your points coloured by HDBSCAN and coloured by Site. 
 So see which clusters contain audio from which site. This can be wrangled in multiple ways - colour points by confidence score, species, location, date, ecological variables - totally up to you! 
 
-**This 
-is a draft repository for a publication currently in review and is actively being updated with tutorials for usage**: 
-A pre-print will be available shortly with further information and an overview of the workflow that we suggest: Searching under the threshold: human-in-the-loop clustering
-of global birdsong embeddings for validating bioacoustic
-classifier outputs. We provide example embedding and audio files from the paper for download in 'audio_data_download.md' 
+**This is a draft repository for a publication currently in review**: 
+A pre-print is available here: 
+[Searching under the threshold: human-in-the-loop clustering of global birdsong embeddings for validating bioacoustic classifier outputs](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7438698)
+
+We provide example embedding and audio files from the paper for download in 'audio_data_download.md' 
 
 
 
