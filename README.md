@@ -125,9 +125,8 @@ running as scripts.
 
 ## Method
 
-BirdNET and Perch convert a segment of audio into a vector of several hundred to
-several thousand values. Segments containing similar sounds have similar
-vectors. These vectors are the input to pardalote.
+BirdNET and Perch convert a segment of audio into a string of numbers called an embedding. 
+Segments containing similar sounds have similar numbers. These embeddings are the input to pardalote - each audio file you want to inspect needs an associated embedding. 
 
 UMAP reduces the vectors to two or three dimensions for plotting, preserving
 local structure from the original space.
@@ -136,8 +135,7 @@ HDBSCAN identifies dense regions in the reduced space and assigns each a cluster
 number. Points not assigned to a cluster are labelled `-1`. The number of
 clusters is not specified in advance.
 
-None of these steps use species information. They group segments by acoustic
-similarity only. Assigning clusters to species is done by the user.
+This process essentially groups segments by acoustic similarity. Assigning clusters is then done by the user, and unwanted clusters can be removed. The ones you want to keep can be exported or labelled. See the pre-print below for a proposed process for threshold-free validation. 
 
 ## Citation
 
