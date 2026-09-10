@@ -6,6 +6,7 @@ There are four stages:
 2. Obtain the pardalote source
 3. Create the pardalote environment
 4. Verify the installation
+5. See quick start guide for a 'new python user' explanation
 
 If a stage fails, consult [troubleshooting](04_troubleshooting.md) 
 ---
