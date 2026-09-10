@@ -43,6 +43,18 @@ working on birdsong validation (particularly to get rid of false-positives, find
 3. [Using the GUI](docs/03_using_the_gui.md)
 4. [Troubleshooting](docs/04_troubleshooting.md)
 
+## Quick Start Guide
+
+1. Download Anaconda Navigator, or Miniconda. Create a new environment (for new python users, i think it is easiest to do this in the GUI. Anaconda navigator > create > new environment > python 3.11.X) 
+2. Download this repo, or even just download pardalote_gui.ipynb
+3. Download the test data from the audio_test.md
+4. In that environment (again for new users this is easiest to do in the GUI) install jupyter lab or jupyter notebook and run it.
+5. open pardalote_gui.ipynb
+6. run the package install cell first
+7. then run the big cell
+8. pardalote opens! You can load your embeddings and associated audio and start clustering. You can use our files as a first try. See [Using the GUI](docs/03_using_the_gui.md) for how to use.
+
+
 ## How to get embeddings in the right format?
 
 Pardalote uses embeddings for clustering, and auditions the associated audio file. It expects embeddings in a .txt file, with the same file name as your audio file. 
