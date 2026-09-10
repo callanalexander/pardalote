@@ -140,7 +140,10 @@ similarity only. Assigning clusters to species is done by the user.
 
 ## Citation
 
-The pre-print for this work will be out shortly. This work relies heavily on the contributions of the following papers: 
+A pre-print is available here: 
+[Searching under the threshold: human-in-the-loop clustering of global birdsong embeddings for validating bioacoustic classifier outputs](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7438698) 
+
+This work relies heavily on the contributions of the following papers: 
 
 - Kahl, S., Wood, C. M., Eibl, M., & Klinck, H. (2021). BirdNET: A deep learning
   solution for avian diversity monitoring. *Ecological Informatics*, 61, 101236.
