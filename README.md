@@ -54,6 +54,7 @@ working on birdsong validation (particularly to get rid of false-positives, find
 7. then run the big cell
 8. pardalote opens! You can load your embeddings and associated audio and start clustering. You can use our files as a first try. See [Using the GUI](docs/03_using_the_gui.md) for how to use.
 
+A video tutorial is in production and will be available shortly. 
 
 ## How to get embeddings in the right format?
 
