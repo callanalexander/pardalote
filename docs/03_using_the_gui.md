@@ -184,7 +184,9 @@ unreadable smear. Leave it.
 
 ## The sorting workflow
 
-Here is the actual loop.
+See the pre-print for an overview of suggested workflow. 
+
+<img width="1224" height="660" alt="pardalote_2" src="https://github.com/user-attachments/assets/0db31dae-c46c-4d41-9dd2-d3608efbe9a6" />
 
 ### Step 1: survey
 
@@ -229,14 +231,12 @@ Two or three rounds is typical.
 **Undo** steps back one round, up to five rounds deep. It restores the data, the
 embeddings and your labels.
 
-### Step 5: mop up the noise, maybe
+### Step 5: mop up the noise (optional)
 
 **Assign Noise** takes every noise point (cluster `-1`) and gives it the label of
 its nearest non-noise neighbour in UMAP space.
 
-Use this at the end, when you are otherwise happy, and only if you would rather
-over-include than miss things. It will pull in some genuine rubbish. If your
-priority is a clean set, leave the noise where it is.
+This can be useful if desired sounds are being classified as noise and you can't quite get the hyperparameters right. It may pull in unwanted noises.
 
 ### Step 6: export
 
