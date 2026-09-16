@@ -134,7 +134,7 @@ mostly press this after changing a display setting.
 Every dot is one segment of audio, positioned so that segments that sounded alike
 to the model sit near each other.
 
-**Click a dot to hear it.** This is the whole point of the tool. Click around a
+**Click a dot to hear it.** Make sure enable audio is selected. Click around a
 clump and you will know within half a dozen clicks whether it is your species,
 somebody else's, or rain.
 
