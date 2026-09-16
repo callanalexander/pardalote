@@ -2,12 +2,11 @@
 
 ## Starting up
 
-1. Open **Anaconda Prompt**
-2. `conda activate pardalote`
-3. `cd "C:\path\to\pardalote"`
-4. `jupyter lab`
+1. See quick start guide - basically make sure you have the pardalote packages installed and the environment activated
+2. eg - `conda activate pardalote` or use the GUI
+3. Open Jupyter lab or notebook
 5. In the file browser: `notebooks` > `pardalote_gui.ipynb`
-6. Click the grey code cell, press **Shift + Enter**
+6. Run the main code cell (the long one). 
 
 A window opens, maximised. It may hide behind your browser: check the taskbar.
 
@@ -18,7 +17,7 @@ either one kills the window and takes your unsaved work with it.
 
 ## The layout
 
-The window has three parts.
+<img width="1224" height="660" alt="pardalote" src="https://github.com/user-attachments/assets/7207a68f-cdc7-4a8b-abae-62b8e191f302" />
 
 **Left sidebar.** Paths, the four main buttons, settings, save and load, export,
 and a log at the bottom. Sections with a `▼` next to them collapse if you click
@@ -32,6 +31,8 @@ spectrogram thumbnails with play buttons for a handful of segments from the
 selected cluster.
 
 You can drag the divider between panels to resize them.
+
+
 
 ---
 
