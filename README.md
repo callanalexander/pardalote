@@ -16,7 +16,7 @@ So see which clusters contain audio from which site. This can be wrangled in mul
 A pre-print is available here: 
 [Searching under the threshold: human-in-the-loop clustering of global birdsong embeddings for validating bioacoustic classifier outputs](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7438698)
 
-We provide example embedding and audio files from the paper for download in 'audio_data_download.md' 
+We provide the data we used in the paper (audio for four species + the associated Perch &  BirdNET embeddings) which you can use to demo the software if you like) and our results in 'audio_data_download.md'. 
 
 
 
