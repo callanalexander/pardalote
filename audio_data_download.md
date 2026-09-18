@@ -1,4 +1,3 @@
-Example embeddings and audio data for the Tawny Frogmouth can be downloaded here: https://drive.google.com/file/d/1ortFOb_DdIkdeG3G5oyuAAoGobstTCe0/view?usp=sharing
+All results, audio and associated embeddings (BirdNET and Perch) from the paper are available here, you can use them to test the approach: [https://drive.google.com/file/d/1ortFOb_DdIkdeG3G5oyuAAoGobstTCe0/view?usp=sharing](https://drive.google.com/drive/folders/1JBEeBphQ6qhl_BH-MwrQFnW4wUx7uJzn?usp=sharing)
 
 
-Validated datasets for all four species listed in the paper can be downloaded by emailing callan.alexander@gmail.com (file is quite large) 
