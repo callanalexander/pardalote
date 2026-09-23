@@ -45,7 +45,7 @@ working on birdsong validation (particularly to get rid of false-positives, find
 
 ## Quick Start Guide
 
-**We now have a beta windows .exe installer in the releases tab - just download the .exe, install and run **
+**We now have a beta windows .exe installer in the releases tab - just download the .exe, install and run**
 
 Alternatively to run in Jupyter: 
 
