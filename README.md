@@ -45,6 +45,10 @@ working on birdsong validation (particularly to get rid of false-positives, find
 
 ## Quick Start Guide
 
+**We now have a beta windows .exe installer in the releases tab - just download the .exe, install and run **
+
+Alternatively to run in Jupyter: 
+
 1. Download Anaconda Navigator, or Miniconda. Create a new environment (for new python users, i think it is easiest to do this in the GUI. Anaconda navigator > create > new environment > python 3.11.X) 
 2. Download this repo, or even just download pardalote_gui.ipynb
 3. Download the test data from the audio_test.md if you want some example audio and embeddings to try. 
