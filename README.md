@@ -27,12 +27,12 @@ We provide the data we used in the paper (audio for four species + the associate
 ## Requirements
 
 - Windows PC (for now). Not tested on Mac or Linux. The notebooks assume Windows paths.
-- At the moment Pardalote runs from a single Jupyter Notebook. We have done this to make usage as simple as possible for
+- At the moment Pardalote runs either from an .exe (beta) or from a single Jupyter Notebook. We have done this to make usage as simple as possible for
   ecologists used to working in R. This project is open source so feel free to adapt for your own workflow. This tool is something I have found really useful in my own personal workflow
 working on birdsong validation (particularly to get rid of false-positives, find hiding species' vocalisations and get an overview of model outputs across all thresholds) and I hope it is useful for others also. 
 - Python 3.11.
 - Audio files.
-- Embeddings for those files, from
+- Embeddings for those files, for now we provide support for the following embeddings: 
   [BirdNET-Analyzer](https://github.com/birdnet-team/BirdNET-Analyzer) or
   [Perch](https://github.com/google-research/perch-hoplite).
 
