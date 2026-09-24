@@ -1,5 +1,6 @@
 """
-Copy the GUI cell out of notebooks/pardalote_gui.ipynb into pardalote_app.py.
+Copy the GUI cell out of notebooks/pardalote_gui.ipynb into pardalote_app.py,
+and turn desktop/pardalote.png (if there is one) into the pardalote.ico icon.
 
 Run from the repository root (the build workflow does this for you):
     python desktop/extract_app.py
@@ -21,3 +22,15 @@ if len(gui) != 1:
 out_path.write_text("# GENERATED from " + nb_path.name + " by extract_app.py. Edit the notebook, not this file.\n\n"
                     + gui[0], encoding="utf-8")
 print(f"Wrote {out_path}")
+
+# Icon: a square PNG (ideally 256x256 or bigger) becomes a multi-size .ico
+png = out_path.parent / "pardalote.png"
+if png.exists():
+    from PIL import Image
+    img = Image.open(png).convert("RGBA")
+    side = max(img.size)
+    square = Image.new("RGBA", (side, side), (0, 0, 0, 0))
+    square.paste(img, ((side - img.width) // 2, (side - img.height) // 2))
+    square.save(out_path.parent / "pardalote.ico",
+                sizes=[(16, 16), (24, 24), (32, 32), (48, 48), (64, 64), (128, 128), (256, 256)])
+    print("Made pardalote.ico from pardalote.png")

@@ -65,23 +65,51 @@ def selftest():
         assert s["files"] == 1 and s["rows"] == 20, s
         print("birdnet split ok")
 
-    # UMAP + HDBSCAN, parallel, the parts most likely to break when frozen
+    # UMAP in parallel, the part most likely to break when frozen
     x = np.vstack([rng.normal(loc=c, size=(400, 32)) for c in (0, 6, 12)]).astype("float32")
     emb = app.umap.UMAP(n_components=2, n_jobs=-1, low_memory=True).fit_transform(x)
-    labels = app.hdbscan.HDBSCAN(min_cluster_size=30, core_dist_n_jobs=-1).fit_predict(
-        emb.astype("float64"))
+    assert emb.shape == (1200, 2)
+    print(f"umap ok ({time.time() - t0:.1f}s)")
+
+    # joblib with all cores, as used inside HDBSCAN and scikit-learn
+    from joblib import Parallel, delayed
+    assert Parallel(n_jobs=-1)(delayed(pow)(i, 2) for i in range(8)) == [i * i for i in range(8)]
+    print("joblib ok")
+
+    # HDBSCAN with the app's own settings, on more than 16,384 points: below
+    # that size HDBSCAN never uses its multi-process code path.
+    pts = np.vstack([rng.normal(loc=c, size=(7000, 2)) for c in (0, 10, 20)])
+    labels = app.hdbscan.HDBSCAN(min_cluster_size=100,
+                                 core_dist_n_jobs=app.HDBSCAN_JOBS).fit_predict(pts)
     n = len(set(labels)) - (1 if -1 in labels else 0)
     assert n >= 2, labels
-    print(f"umap + hdbscan ok, {n} clusters ({time.time() - t0:.1f}s total)")
+    print(f"hdbscan ok on {len(pts):,} points, {n} clusters, "
+          f"core_dist_n_jobs={app.HDBSCAN_JOBS} ({time.time() - t0:.1f}s total)")
     return 0
 
 
 def main():
+    # A windowed .exe (and any helper process it starts) has no console streams.
+    if sys.stdout is None:
+        sys.stdout = open(os.devnull, "w")
+    if sys.stderr is None:
+        sys.stderr = open(os.devnull, "w")
+    # joblib's "loky" worker processes cannot start inside a PyInstaller .exe
+    # (they crash with "not enough values to unpack"). Nothing in pardalote
+    # should start them any more, but if something does, exit quietly instead
+    # of popping up a crash window. The main window then reports the error.
+    if (len(sys.argv) == 3 and sys.argv[1] == "--multiprocessing-fork"
+            and "=" not in sys.argv[2]):
+        sys.exit(1)
     multiprocessing.freeze_support()
+    if getattr(sys, "frozen", False):
+        # Make any joblib parallel work in the .exe use threads, not processes.
+        import joblib
+        joblib.parallel_config(backend="threading")
     if "--selftest" in sys.argv:
         import tempfile
         os.environ.setdefault("NUMBA_CACHE_DIR", tempfile.mkdtemp(prefix="numba_"))
-        if sys.stdout is None:                    # windowed exe: write results to a file
+        if getattr(sys, "frozen", False) and os.name == "nt":   # windowed exe: no console
             sys.stdout = sys.stderr = open("selftest.log", "w", encoding="utf-8", buffering=1)
         try:
             code = selftest()

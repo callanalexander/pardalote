@@ -55,7 +55,7 @@ For the installer, install [Inno Setup 6](https://jrsoftware.org/isinfo.php) and
 | `pardalote.spec` | PyInstaller build recipe |
 | `pardalote.iss` | Inno Setup installer recipe |
 | `requirements-build.txt` | Pinned library versions the build was tested with |
-| `pardalote.ico` | Optional. Drop an icon here and the build picks it up |
+| `pardalote.png` | Optional icon. A square PNG, 256x256 or bigger. The build turns it into `pardalote.ico` and uses it for the program, the window, the shortcuts and the installer |
 
 ## Things users should know
 

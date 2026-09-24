@@ -26,6 +26,9 @@ ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 UninstallDisplayIcon={app}\pardalote.exe
 UninstallDisplayName=pardalote
+#if FileExists(AddBackslash(SourcePath) + "pardalote.ico")
+SetupIconFile=pardalote.ico
+#endif
 
 [Tasks]
 Name: "desktopicon"; Description: "Put a pardalote icon on the desktop"; GroupDescription: "Shortcuts:"

@@ -14,6 +14,8 @@ for pkg in ("umap", "pynndescent", "hdbscan", "librosa", "soundfile", "sounddevi
 hiddenimports += collect_submodules("sklearn")
 
 icon = "pardalote.ico" if os.path.exists("pardalote.ico") else None
+# Ship the icon files too, so the app can put them on its window
+datas += [(f, ".") for f in ("pardalote.ico", "pardalote.png") if os.path.exists(f)]
 
 a = Analysis(
     ["launch_pardalote.py"],
